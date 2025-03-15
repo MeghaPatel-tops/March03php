@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include("Model/Model.php");
 include("Controller/Controller.php");
 
@@ -8,6 +9,7 @@ $uri_str = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 $uri_array = explode('/', $uri_str);
 $path = $uri_array[3];
+$queryparams = isset($uri_array[4]) ? $uri_array[4] : 0;
 
 $GLOBALS['baseurl']="http://localhost/march03php/MVC/";
 
@@ -21,8 +23,14 @@ else if($path == "categoryadd"){
     $objController->categoryadd();
 }
 else if($path == "users"){
-    echo "users";
+   
 }
+else if($path == "deletecategory"){
+   $objController->deletecategory($queryparams);
+}
+else if($path == "editcategory"){
+    $objController->editcategory($queryparams);
+ }
 else{
     
 }

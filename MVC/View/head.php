@@ -39,7 +39,7 @@
     />
     <!--end::Third Party Plugin(Bootstrap Icons)-->
     <!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="View/dist/css/adminlte.css" />
+    <link rel="stylesheet" href="<?php echo $GLOBALS['baseurl']?>View/dist/css/adminlte.css" />
     <!--end::Required Plugin(AdminLTE)-->
     <!-- apexcharts -->
     <link

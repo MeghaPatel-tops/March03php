@@ -44,8 +44,10 @@
             <div class="row">
             <div class="col-md-6">
                 <div class="card mb-4">
-                  <div class="card-header"><h3 class="card-title">Bordered Table</h3></div>
+               
+                  <div class="card-header"><h3 class="card-title">Bordered Table</h3> <a href="categoryadd" class="btn btn-primary ms-5"> Add </a></div>
                   <!-- /.card-header -->
+                   
                   <div class="card-body">
                     <table class="table table-bordered">
                       <thead>
@@ -53,6 +55,7 @@
                           <th style="width: 10px">#</th>
                           <th>Catgory</th>
                           <th>Image</th>
+                          <th colspan="2" style="text-align:center">Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -64,6 +67,10 @@
                                     <td><?php echo $i;?></td>
                                     <td><?php echo $key->cname;?></td>
                                     <td><img src="<?php echo $GLOBALS['baseurl']."Uploads/".$key->cimage?>" alt="" width="80px" height="80px"></td>
+                                    <td><a href="deletecategory/<?php echo $key->cid?>" class="btn btn-danger">Delete</a></td>
+                                    <td>
+                                        <a href="editcategory/<?php echo $key->cid?>" class="btn btn-success">Edit</a>
+                                    </td>
                                 </tr>
                             <?php
                             $i++;

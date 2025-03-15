@@ -27,7 +27,7 @@
               role="menu"
               data-accordion="false">
               <li class="nav-item menu-open">
-                <a href="#" class="nav-link active">
+                <a href="<?php echo $GLOBALS['baseurl']?>" class="nav-link active">
                  
                   <p>
                     Dashboard
@@ -37,7 +37,7 @@
                 
               </li>
               <li class="nav-item menu-open">
-                <a href="users" class="nav-link active">
+                <a href="<?php echo $GLOBALS['baseurl']?>users" class="nav-link active">
                  
                   <p>
                     Users
@@ -47,10 +47,20 @@
                 
               </li>
               <li class="nav-item menu-open">
-                <a href="product" class="nav-link active">
+                <a href="<?php echo $GLOBALS['baseurl']?>product" class="nav-link active">
                  
                   <p>
                     Product
+                    <i class="nav-arrow bi bi-chevron-right"></i>
+                  </p>
+                </a>
+                
+              </li>
+              <li class="nav-item menu-open">
+                <a href="<?php echo $GLOBALS['baseurl']?>category" class="nav-link active">
+                 
+                  <p>
+                    Category
                     <i class="nav-arrow bi bi-chevron-right"></i>
                   </p>
                 </a>

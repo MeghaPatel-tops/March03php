@@ -30,6 +30,54 @@ class Model {
         }
         return $rw ?? [];
     }
+
+    public function deleteData($table,$where){
+        //delete from table where id=1;
+        //where =[id=1]
+        $query = "delete from $table where 1=1";
+        foreach($where as $key => $value){
+            $query.= " AND ".$key ." = '". $value ."'";
+        }
+        $res = $this->connection->query($query);
+        return $res;
+
+    }
+
+    public function findOne($table,$where){
+        //delete from table where id=1;
+        //where =[id=1]
+        $query = "select * from $table where 1=1";
+        foreach($where as $key => $value){
+            $query.= " AND ".$key ." = '". $value ."'";
+        }
+        $res = $this->connection->query($query);
+        $rw= $res->fetch_object();
+        return $rw ?? [];
+
+    }
+
+    public function updateData($table,$setArray,$where){
+        //update table set col=val,col=val where id=1;
+        $query = "update $table set ";
+       echo  $count = count($setArray);
+        $i=0;
+        foreach($setArray as $key => $value){
+            if($i < $count-1){
+                $query.= "  ".$key ." = '". $value ."',";
+            }
+            else{
+                $query.= "  ".$key ." = '". $value ."' ";
+            }
+            $i++;
+            
+        }
+        $query.= " where 1=1";
+        foreach($where as $key => $value){
+            $query.= " AND ".$key ." = '". $value ."'";
+        }
+        $res = $this->connection->query($query);
+        return $res;
+    }
     
 }
 
