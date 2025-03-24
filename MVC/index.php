@@ -1,9 +1,15 @@
 <?php
 ob_start();
+session_start();
 include("Model/Model.php");
 include("Controller/Controller.php");
+include("Controller/ProductController.php");
+include("Controller/UserController.php");
+
 
 $objController  = new Controller();
+$objProduct = new ProductController();
+$objUser = new UserController();
 
 $uri_str = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
@@ -31,6 +37,29 @@ else if($path == "deletecategory"){
 else if($path == "editcategory"){
     $objController->editcategory($queryparams);
  }
+ else if($path == "product"){
+    $objProduct->productview();
+ }
+ else if($path == "productadd"){
+    $objProduct->productadd();
+ }
+ else if($path == "editproduct"){
+    $objProduct->productedit($queryparams);
+ }
+ else if($path == "user"){
+   $objUser->userIndex();
+}
+else if($path == "userreg"){
+   $objUser->Registration();
+}
+else if($path == "userlogin"){
+   $objUser->Login();
+}
+else if($path == "userlogout"){
+   $objUser->Logout();
+}
+
+
 else{
     
 }

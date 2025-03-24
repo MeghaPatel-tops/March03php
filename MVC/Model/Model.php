@@ -31,6 +31,20 @@ class Model {
         return $rw ?? [];
     }
 
+    public function selectDataJoin($table,$join){
+
+        $query = "select * from $table";//join category on category.cid=product.catid
+        foreach($join as $key=>$value ){
+            $query .= " join ".$key ." on ".$value;
+        }
+        $res=$this->connection->query($query);
+        while($row=$res->fetch_object()){
+            $rw[]=$row;
+        }
+        return $rw ?? [];
+    }
+
+
     public function deleteData($table,$where){
         //delete from table where id=1;
         //where =[id=1]
