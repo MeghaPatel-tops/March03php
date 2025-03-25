@@ -6,6 +6,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
+    .body{
+     
+    }
   .modal-header, h4, .close {
     background-color: #5cb85c;
     color:white !important;
@@ -40,6 +43,13 @@
     .carousel-caption {
       display: none; 
     }
+  }
+  .product{
+    padding: 20px;
+    border: 2px solid rgba(14, 12, 12, 0.2);
+    border-radius:20px;
+    margin-left:30px;
+    margin-top:30px;
   }
   </style>
 </head>
@@ -107,22 +117,26 @@
 <div class="container text-center">    
   <h3>What We Do</h3><br>
   <div class="row">
-  <div class="col-sm-3">
-      <div class="well">
-       <p>Some text..</p>
+  <?php include('sidebar.php');?>
+   <div class="col-md-10">
+      
+      <div class="row">
+        <?php
+        foreach($productData as $key){
+          ?>
+        <div class="col-sm-3 product">
+          <img src="<?php echo $GLOBALS['baseurl']."/Uploads/products".$key->pimage?>" class="img-responsive" style="width:100%;height:150px" alt="Image">
+          <h3 style="text-align:left"><b><?php echo $key->pname;?></b></h3>
+          <h5 style="text-align:left"><span>&#8377</span><?php echo $key->price;?></h5>
+          <br>
+          <button class= "btn btn-primary btn-sm" >Add To Cart</button>
+        </div>
+          <?php
+        }
+        ?>
       </div>
-      <div class="well">
-       <p>Some text..</p>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <img src="View/User/Images/user1.jpeg" class="img-responsive" style="width:100%" alt="Image">
-      <p>Current Project</p>
-    </div>
-    <div class="col-sm-4"> 
-      <img src="View/User/Images/user2.jpeg" class="img-responsive" style="width:100%" alt="Image">
-      <p>Project 2</p>    
-    </div>
+      
+   </div>
     
   </div>
 </div><br>

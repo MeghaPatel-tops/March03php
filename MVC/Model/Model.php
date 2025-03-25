@@ -69,6 +69,20 @@ class Model {
         return $rw ?? [];
 
     }
+    public function findById($table,$where){
+        //delete from table where id=1;
+        //where =[id=1]
+        $query = "select * from $table where 1=1";
+        foreach($where as $key => $value){
+            $query.= " AND ".$key ." = '". $value ."'";
+        }
+        $res = $this->connection->query($query);
+        while($row=$res->fetch_object()){
+            $rw[]=$row;
+        }
+        return $rw ?? [];
+
+    }
 
     public function updateData($table,$setArray,$where){
         //update table set col=val,col=val where id=1;

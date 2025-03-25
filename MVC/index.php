@@ -59,6 +59,10 @@ else if($path == "userlogout"){
    $objUser->Logout();
 }
 
+else if($path == "getProduct"){
+   $objUser->getProductByID($queryparams);
+}
+
 
 else{
     

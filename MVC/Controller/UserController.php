@@ -6,6 +6,8 @@ class UserController extends Model{
     }
 
     public function userIndex(){
+        $catdata = $this->selectData("category");
+        $productData = $this->selectData("products");
         include('View/User/userindex.php');
     }
 
@@ -40,6 +42,13 @@ class UserController extends Model{
         if(isset($_SESSION['user'])){
             session_destroy();
             header("Location: ".$GLOBALS['baseurl']."user");
+        }
+    }
+
+    public function getProductByID($id){
+        $products = $this->findById("products",["catid"=>$id]);
+        if(isset($products)){
+            echo json_encode($products);
         }
     }
 }    
