@@ -46,10 +46,59 @@ class UserController extends Model{
     }
 
     public function getProductByID($id){
-        $products = $this->findById("products",["catid"=>$id]);
+        if($id==0){
+            $products = $this->selectData("products");
+        }
+        else{
+            $products = $this->findById("products",["catid"=>$id]);
+        }
+        
         if(isset($products)){
             echo json_encode($products);
         }
+    }
+
+    public function addToCart($pid){
+            if(!$_SESSION && $_SESSION == [])  {
+                echo "fail";
+                echo "<script>alert('please Login');</script>";
+                header("Location: ".$GLOBALS['baseurl']."user");
+            }
+            else{
+                $cartArray=[
+                    "pid"=>$pid,
+                    "userid"=>$_SESSION['user']->uid,
+                    "qty"=>1
+                ];
+                $cartdata = $this->insertData("cart",$cartArray);
+                if($cartdata){
+                    header("Location: ".$GLOBALS['baseurl']."user");
+                }
+            }
+    }
+
+    public function getCartCount(){
+        $count =0;
+        
+        if($_SESSION && $_SESSION != [])  {
+            $uid= $_SESSION['user']->uid;
+            $cartdata = $this->findById("cart",["userid"=>$uid]);
+            if(isset($cartdata)){
+                $count = count($cartdata);
+            }
+        }
+        echo $count;
+    }
+    public function viewCart(){
+        
+        
+        if($_SESSION && $_SESSION != [])  {
+            $uid= $_SESSION['user']->uid;
+            $join = ["products"=>"cart.pid=products.pid"];
+            $cartdata = $this->selectDataJoinWhere("cart",$join,["userid"=>$uid]);
+            include('View/User/cart.php');
+        }
+        
     }
 }    
 ?>

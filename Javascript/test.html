@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            overflow-y: hidden;
+
+        }
+        .img{
+            height: 100px;
+            width: 100px;
+            margin-top: 600px;
+            position: absolute;
+        }
+    </style>
+    <script>
+        var thank= document.getElementById('thank');
+        var x = 0;
+
+        setInterval(function(){ thank.style.left = x + "px"; x++; },
+            20); // 20ms 
+    </script>
+</head>
+<body>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Foot_ball_red.png" alt="" class="img" id="thank">
+</body>
+</html>

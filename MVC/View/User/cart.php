@@ -85,53 +85,45 @@
     </div>
   </div>
 </nav>
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-    </ol>
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <img src="View/User/Images/user1.jpeg" alt="Image">
-        <div class="carousel-caption">
-          <h3>Sell $</h3>
-          <p>Money Money.</p>
-        </div>      
-      </div>
-
-      <div class="item">
-        <img src="View/User/Images/user2.jpeg" alt="Image">
-        <div class="carousel-caption">
-          <h3>More Sell $</h3>
-          <p>Lorem ipsum...</p>
-        </div>      
-      </div>
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-</div>
 <div class="container text-center">    
-  <h3>What We Do</h3><br>
+  <h3>Cart Table</h3><br>
   <div class="row">
-  <?php include('sidebar.php');?>
-   <div class="col-md-10">
-      
-      <div class="row" id="pdata">
-      
-      </div>
-      
-   </div>
+  
+  <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Product Name</th>
+                          <th>Price</th>
+                          <th>Description</th>
+
+                          <th>Image</th>
+                          <th>Qty</th>
+                          <th>Subtotal</th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                        $i=1;
+                        foreach($cartdata as $key){
+                            ?>
+                                <tr>
+                                    <td><?php echo $key->pname;?></td>
+                                    <td><?php echo $key->price;?></td>
+                                    <td><?php echo $key->description;?></td>
+                                    
+                                    <td><img src="<?php echo $GLOBALS['baseurl']."Uploads/products".$key->pimage?>" alt="" width="80px" height="80px"></td>
+                                    <td><input type="number" name="" id="" value="<?php echo $key->qty?>"></td>
+                                    <td><?php echo $key->qty * $key->price?></td>
+                                  
+                                </tr>
+                            <?php
+                            $i++;
+                        }
+                        ?>
+                      </tbody>
+                    </table>
     
   </div>
 </div><br>

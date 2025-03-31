@@ -1,3 +1,5 @@
+<a href="<?php echo $GLOBALS['baseurl']?>viewCart"><i class="fa fa-shopping-cart" style="font-size:15px;color:white"><span style="font-size:15px;color:white" id="cartcount"></span></i></a>
+<span> &nbsp; &nbsp;</span>
 
   <?php
   if(isset($_SESSION['user'])){

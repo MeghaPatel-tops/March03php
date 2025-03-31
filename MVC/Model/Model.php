@@ -43,6 +43,22 @@ class Model {
         }
         return $rw ?? [];
     }
+    public function selectDataJoinWhere($table,$join,$where){
+
+        $query = "select * from $table ";//join category on category.cid=product.catid
+        foreach($join as $key=>$value ){
+            $query .= " join ".$key ." on ".$value;
+        }
+        $query.= " where 1=1  ";
+        foreach($where as $key => $value){
+            $query.= " AND ".$key ." = '". $value ."'";
+        }
+        $res=$this->connection->query($query);
+        while($row=$res->fetch_object()){
+            $rw[]=$row;
+        }
+        return $rw ?? [];
+    }
 
 
     public function deleteData($table,$where){

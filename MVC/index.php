@@ -63,6 +63,20 @@ else if($path == "getProduct"){
    $objUser->getProductByID($queryparams);
 }
 
+else if($path == "addtocart"){
+
+   $objUser->addToCart($queryparams);
+}
+else if($path == "getCartCount"){
+
+   $objUser->getCartCount();
+}
+
+else if($path == "viewCart"){
+
+   $objUser->viewCart();
+}
+
 
 else{
     
