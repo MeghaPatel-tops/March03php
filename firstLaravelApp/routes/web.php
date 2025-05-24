@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\CommanController;
+use  App\Http\Controllers\CommanService;
+use  App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
+
 
 Route::get('/', function () {
     echo "<h1>Welcome to laravel app</h1>";
@@ -24,5 +27,9 @@ Route::get('/product',function(Request $req){
 Route::get('user/{id}',function($id){
     echo $id;
 });
+Route::get('/comman',CommanService::class);
 
+Route::resource('/product',ProductController::class);
+
+Route::get('/about',[CommanController::class,'aboutShow']);
 Route::redirect('/here','test');

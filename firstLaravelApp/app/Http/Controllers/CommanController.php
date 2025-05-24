@@ -10,4 +10,10 @@ class CommanController extends Controller
     function testcontroller(){
         echo "test";
     }
+
+    function aboutShow(){
+        return view('about',["name"=>"Megha","isAdmin"=>true]);
+    }
 }
+
+
